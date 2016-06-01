@@ -12,7 +12,7 @@ export default class ArticleComments extends Component {
 		const { openComment } = this.state;
 
 		if (!comments) return <hr></hr>
-
+		//зорошо, но если вам действительно нужно столько разных проверок и разметки - выносите это в отдельные методы: это уже страшоно выглядит, представте как это будет для более сложных задач
 		if (comments) {
 			let commentItems;
 
