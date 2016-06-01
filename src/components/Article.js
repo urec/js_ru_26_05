@@ -1,9 +1,10 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
+import ArticleComments from './ArticleComments'
 
 class Article extends Component {
 
     state = {
-        isOpen: false
+      isOpen: false
     }
 
     render() {
@@ -11,7 +12,14 @@ class Article extends Component {
         const { isOpen } = this.state
 
         if (!article) return <h3>No article</h3>
-        const body = isOpen ? <section>{article.text}</section> : null
+
+        const {comments} = article;
+
+        const body = isOpen ?
+          <section>
+            {article.text}
+            <ArticleComments comments={comments} />
+          </section> : null
 
         return (
             <div>
@@ -27,21 +35,6 @@ class Article extends Component {
         })
     }
 }
-
-
-
-/*
-function Article(props) {
-    const { article } = props
-    if (!article) return <h3>No article</h3>
-    return (
-        <div>
-            <h3>{article.title}</h3>
-            <section>{article.text}</section>
-        </div>
-    )
-}
-*/
 
 Article.propTypes = {
     article: PropTypes.shape({
